@@ -4,5 +4,5 @@ FROM openjdk:21
 WORKDIR /app
 COPY target/authservice-0.0.1.jar /app/
 
-EXPOSE 8080
-ENTRYPOINT ["java","-jar","javabot-0.0.1.jar"]
+EXPOSE 8081
+ENTRYPOINT ["java","-jar","authservice-0.0.1.jar"]
