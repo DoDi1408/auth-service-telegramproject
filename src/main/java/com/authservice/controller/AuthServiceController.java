@@ -13,9 +13,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import com.authservice.models.Employee;
 import com.authservice.service.JWTService;
 
-import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
-import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.security.SignatureException;
