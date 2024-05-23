@@ -34,7 +34,7 @@ public class JWTService {
     public String createJWT(Employee emp){
         loggerJWT.info("Creating JWT");
         Date currentTime = new Date();
-        Date expirationTime = new Date(currentTime.getTime() + TimeUnit.HOURS.toMillis(3600000));
+        Date expirationTime = new Date(currentTime.getTime() + TimeUnit.HOURS.toMillis(1));
 
         String jwt = Jwts.builder()
                 .issuer("auth-service")
