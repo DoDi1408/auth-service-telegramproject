@@ -21,6 +21,8 @@ spec:
         envFrom:
         - secretRef:
             name: bot-info
+        - secretRef:
+            name: jwt-signing-key
       imagePullSecrets:  
       - name: ocirsecret  
 
