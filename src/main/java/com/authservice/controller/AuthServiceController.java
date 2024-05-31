@@ -56,11 +56,11 @@ public class AuthServiceController{
         }
         catch (SignatureException sex){
             loggerAuth.error("FORBIDDEN", sex);
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("SignatureException");
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("SignatureException");
         }
         catch (ExpiredJwtException ejx){
             loggerAuth.error("EXPIRED", ejx);
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Expired");
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Expired");
         }
         catch (MalformedJwtException mje){
             loggerAuth.error("Malformed JWT", mje);
