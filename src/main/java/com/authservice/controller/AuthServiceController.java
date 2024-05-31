@@ -52,10 +52,10 @@ public class AuthServiceController{
         try {
             Employee employee = jwtService.parseJwtToEmployee(JWT);
             String newJwt = jwtService.createJWT(employee);
-            return ResponseEntity.accepted().header("token", newJwt).body(employee);
+            return ResponseEntity.ok().header("token", newJwt).body(employee);
         }
         catch (SignatureException sex){
-            loggerAuth.error("FORBIDDEN", sex);
+            loggerAuth.error("Unauthorized due to bad signature", sex);
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("SignatureException");
         }
         catch (ExpiredJwtException ejx){
