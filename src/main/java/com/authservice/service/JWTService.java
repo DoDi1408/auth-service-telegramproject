@@ -30,6 +30,7 @@ public class JWTService {
         catch(Exception e){
             pvKey = Jwts.SIG.HS512.key().build();
         }
+        loggerJWT.info(pvKey.toString());
     }
     public String createJWT(Employee emp){
         loggerJWT.info("Creating JWT");
