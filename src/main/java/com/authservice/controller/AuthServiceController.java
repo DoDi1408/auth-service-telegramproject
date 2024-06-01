@@ -52,7 +52,8 @@ public class AuthServiceController{
         try {
             Employee employee = jwtService.parseJwtToEmployee(JWT);
             String newJwt = jwtService.createJWT(employee);
-            return ResponseEntity.ok().header("token", newJwt).body(employee);
+            return ResponseEntity.status(HttpStatus.OK).header("token", newJwt).body(employee);
+            //return ResponseEntity.accepted().header("token", newJwt).body(employee);
         }
         catch (SignatureException sex){
             loggerAuth.error("Unauthorized due to bad signature", sex);
