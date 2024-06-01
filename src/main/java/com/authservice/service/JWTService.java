@@ -1,5 +1,10 @@
 package com.authservice.service;
 
+
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
+
+import java.security.Provider;
+import java.security.Security;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
@@ -25,7 +30,13 @@ public class JWTService {
 
     public JWTService(){
         try {
-            pvKey = SecretKeyFactory.getInstance("AES").generateSecret(new SecretKeySpec(System.getenv("SIGNING-KEY").getBytes(), "AES"));
+            Security.addProvider(new BouncyCastleProvider());
+            Provider[] providers =  Security.getProviders();
+            for (Provider provider : providers) {
+                loggerJWT.info(provider.toString());
+            }
+            String providerName = "BC";
+            pvKey = SecretKeyFactory.getInstance("AES", providerName).generateSecret(new SecretKeySpec(System.getenv("SIGNING-KEY").getBytes(), "AES"));
         
         }
         catch(Exception e){
