@@ -57,7 +57,7 @@ public class JWTService {
         loggerJWT.info("parsing jwt");
         Jws<Claims> parsedJwt = Jwts.parser().verifyWith(pvKey).build().parseSignedClaims(jwt);
         Claims claims = parsedJwt.getPayload();
-        Employee returnEmployee = new Employee(claims.get("firstName", String.class),claims.get("lastName", String.class),claims.get("telegramId", Integer.class));
+        Employee returnEmployee = new Employee(claims.get("firstName", String.class),claims.get("lastName", String.class),claims.get("telegramId", Long.class));
         returnEmployee.setEmail(claims.get("email",String.class));
         returnEmployee.setId(claims.get("id",Integer.class));
         returnEmployee.setTeam(claims.get("team",Integer.class));
