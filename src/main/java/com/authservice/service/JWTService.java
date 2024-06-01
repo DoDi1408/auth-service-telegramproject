@@ -19,12 +19,9 @@ import io.jsonwebtoken.Claims;
 @Component
 public class JWTService {
     private final static Logger loggerJWT = LoggerFactory.getLogger(JWTService.class);
-    private SecretKey pvKey;
-    //private final SecretKey pvKey2 = Jwts.SIG.HS512.key().build();
+    private SecretKey pvKey = Jwts.SIG.HS512.key().build();
 
-    public JWTService(){
-        pvKey = Jwts.SIG.HS512.key().build();
-    }
+    public JWTService(){}
     public String createJWT(Employee emp){
         loggerJWT.info("Creating JWT");
         Date currentTime = new Date();
