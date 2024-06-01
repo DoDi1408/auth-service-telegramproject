@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: auth-app
-        image: qro.ocir.io/ax6svbbnc2oh/auth-service-javabot
+        image: qro.ocir.io/ax6svbbnc2oh/auth-service-javabot:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 8081

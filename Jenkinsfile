@@ -17,7 +17,7 @@ pipeline {
         stage('Build docker image'){
             steps{
                 script{
-                    sh "docker build -t auth-service-javabot:${BUILD_NUMBER}-${GIT_COMMIT} ."
+                    sh "docker build -t auth-service-javabot:latest ."
                 }
             }
         }
@@ -25,8 +25,8 @@ pipeline {
             steps{
                 script{
                     sh 'echo ${OCI_CREDENTIALS_PSW} | docker login --username ${OCI_CREDENTIALS_USR} --password-stdin qro.ocir.io'
-                    sh "docker tag auth-service-javabot:${BUILD_NUMBER}-${GIT_COMMIT} qro.ocir.io/ax6svbbnc2oh/auth-service-javabot:${BUILD_NUMBER}-${GIT_COMMIT}"
-                    sh "docker push qro.ocir.io/ax6svbbnc2oh/auth-service-javabot:${BUILD_NUMBER}-${GIT_COMMIT}"
+                    sh "docker tag auth-service-javabot:latest qro.ocir.io/ax6svbbnc2oh/auth-service-javabot:latest"
+                    sh "docker push qro.ocir.io/ax6svbbnc2oh/auth-service-javabot:latest"
                 }
             }
         }
