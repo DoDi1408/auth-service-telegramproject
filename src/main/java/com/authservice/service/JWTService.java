@@ -25,7 +25,7 @@ public class JWTService {
 
     public JWTService(){
         try {
-            pvKey = SecretKeyFactory.getInstance("HmacSHA512").generateSecret(new SecretKeySpec(System.getenv("SIGNING-KEY").getBytes(), "HmacSHA512"));
+            pvKey = SecretKeyFactory.getInstance("AES").generateSecret(new SecretKeySpec(System.getenv("SIGNING-KEY").getBytes(), "AES"));
         
         }
         catch(Exception e){
