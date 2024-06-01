@@ -50,9 +50,7 @@ public class AuthServiceController{
 
         try {
             Employee employee = jwtService.parseJwtToEmployee(JWT);
-            loggerAuth.info(employee.toString());
             String newJwt = jwtService.createJWT(employee);
-            loggerAuth.info(newJwt);
             return ResponseEntity.status(HttpStatus.OK).header("token", newJwt).body(employee);
             //return ResponseEntity.accepted().header("token", newJwt).body(employee);
         }
