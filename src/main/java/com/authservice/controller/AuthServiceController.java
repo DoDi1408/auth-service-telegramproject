@@ -51,7 +51,9 @@ public class AuthServiceController{
 
         try {
             Employee employee = jwtService.parseJwtToEmployee(JWT);
+            loggerAuth.info(employee.toString());
             String newJwt = jwtService.createJWT(employee);
+            loggerAuth.info(newJwt);
             return ResponseEntity.status(HttpStatus.OK).header("token", newJwt).body(employee);
             //return ResponseEntity.accepted().header("token", newJwt).body(employee);
         }
@@ -67,10 +69,11 @@ public class AuthServiceController{
             loggerAuth.error("Malformed JWT", mje);
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Malformed JWT");
         }
-        catch (JwtException jwtex){
-            loggerAuth.error("error", jwtex);
+        catch (Exception e){
+            loggerAuth.error("error", e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("I dont know lol");
         }  
+        
     }
     
 }
