@@ -26,11 +26,12 @@ public class JWTService {
     public JWTService(){
         try {
             pvKey = SecretKeyFactory.getInstance("HmacSHA512").generateSecret(new SecretKeySpec(System.getenv("SIGNING-KEY").getBytes(), "HmacSHA512"));
+        
         }
         catch(Exception e){
             pvKey = Jwts.SIG.HS512.key().build();
+            loggerJWT.error("failed", e);
         }
-        loggerJWT.info(pvKey.toString());
     }
     public String createJWT(Employee emp){
         loggerJWT.info("Creating JWT");
