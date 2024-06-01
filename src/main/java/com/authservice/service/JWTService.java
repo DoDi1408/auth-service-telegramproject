@@ -62,6 +62,8 @@ public class JWTService {
         returnEmployee.setId(claims.get("id",Integer.class));
         returnEmployee.setTeam(claims.get("team",Integer.class));
         returnEmployee.setPassword(claims.get("password",String.class));
+        loggerJWT.info("Is this thing even on????????????");
+        loggerJWT.error("AAAAA");
         return returnEmployee;
     }
 }

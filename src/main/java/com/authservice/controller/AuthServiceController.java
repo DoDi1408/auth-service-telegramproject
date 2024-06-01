@@ -14,7 +14,6 @@ import com.authservice.models.Employee;
 import com.authservice.service.JWTService;
 
 import io.jsonwebtoken.ExpiredJwtException;
-import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.security.SignatureException;
 
