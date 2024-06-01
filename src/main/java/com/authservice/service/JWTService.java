@@ -1,16 +1,10 @@
 package com.authservice.service;
 
-
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
-
-import java.security.Provider;
-import java.security.Security;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 import javax.crypto.SecretKey;
-import javax.crypto.SecretKeyFactory;
-import javax.crypto.spec.SecretKeySpec;
+
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,20 +23,7 @@ public class JWTService {
     //private final SecretKey pvKey2 = Jwts.SIG.HS512.key().build();
 
     public JWTService(){
-        try {
-            Security.addProvider(new BouncyCastleProvider());
-            Provider[] providers =  Security.getProviders();
-            for (Provider provider : providers) {
-                loggerJWT.info(provider.toString());
-            }
-            String providerName = "BC";
-            pvKey = SecretKeyFactory.getInstance("AES", providerName).generateSecret(new SecretKeySpec(System.getenv("SIGNING-KEY").getBytes(), "AES"));
-        
-        }
-        catch(Exception e){
-            pvKey = Jwts.SIG.HS512.key().build();
-            loggerJWT.error("failed", e);
-        }
+        pvKey = Jwts.SIG.HS512.key().build();
     }
     public String createJWT(Employee emp){
         loggerJWT.info("Creating JWT");
